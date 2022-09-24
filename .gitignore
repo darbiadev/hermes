@@ -1,9 +1,13 @@
 # JetBrains
 .idea
 
+# Enviorment
+venv
+
 # Packaging
 *.egg-info
 dist
+build
 
 # Cache
 __pycache__
