@@ -6,7 +6,6 @@ import click
 @click.group()
 def cli():
     """Outer CLI group"""
-    pass
 
 
 @click.command()
