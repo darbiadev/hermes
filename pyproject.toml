@@ -1,0 +1,59 @@
+[project]
+name = "hermes"
+version = "0.1.0"
+description = "A wrapper for UPS' API"
+readme = "README.md"
+authors = [
+    { name = "Bradley Reynolds", email = "bradley.reynolds@darbia.dev" },
+]
+license = { text = "MIT" }
+requires-python = ">=3.7"
+dependencies = [
+    "click"
+]
+
+[project.urls]
+repository = "https://github.com/darbiadev/hermes/"
+documentation = "https://darbiadev.github.io/hermes/"
+
+[project.optional-dependencies]
+dev = [
+    "pylint>=2.12.2",
+    "pytest>=6.2.5",
+    "pytest-cov>=3.0.0",
+    "black>=21.12b0",
+]
+tests = [
+    "pytest>=6.2.5",
+]
+docs = [
+    "sphinx>=4.3.2",
+    "sphinxcontrib-autoprogram>=0.1.7",
+    "sphinx-rtd-theme>=1.0.0",
+    "toml>=0.10.2",
+]
+
+[project.scripts]
+hermes = "hermes.__main__:cli"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.sphinx]
+copyright = "Darbia"
+author = "Bradley Reynolds"
+api_dir = "hermes"
+
+[tool.black]
+target-version = ["py310"]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+addopts = "tests -r a -v --doctest-modules src"
+
+[tool.pylint.format]
+max-line-length = 120
