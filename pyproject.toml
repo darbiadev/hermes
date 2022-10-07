@@ -1,7 +1,7 @@
 [project]
 name = "hermes"
 version = "0.1.0"
-description = "A wrapper for UPS' API"
+description = "An automated shipping client"
 readme = "README.md"
 authors = [
     { name = "Bradley Reynolds", email = "bradley.reynolds@darbia.dev" },
