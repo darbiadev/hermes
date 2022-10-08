@@ -13,6 +13,7 @@ dependencies = [
     "pydantic",
     "typer[all]",
     "darbiadev_shipping[ups]",
+    "click==7.1.2"
 ]
 
 [project.urls]
