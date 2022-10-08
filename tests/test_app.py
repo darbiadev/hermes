@@ -8,6 +8,5 @@ runner = CliRunner()
 
 
 def test_app():
-    result = runner.invoke(app)
-    assert result.stdout_bytes == 0
-    assert result.stderr_bytes == 0
+    result = runner.invoke(app, ["--help"])
+    assert result.exit_code == 0
