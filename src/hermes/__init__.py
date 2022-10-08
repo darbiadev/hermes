@@ -7,7 +7,7 @@ from pydantic import BaseSettings
 load_dotenv()
 
 
-class Settings(BaseSettings):
+class Settings(BaseSettings):  # pylint: disable=too-few-public-methods
     """Settings for the application."""
 
     ups_base_url: str
