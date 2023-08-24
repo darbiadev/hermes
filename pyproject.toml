@@ -1,7 +1,7 @@
 [project]
 name = "hermes"
 version = "0.1.0"
-description = "A wrapper for UPS' API"
+description = "An automated shipping client"
 readme = "README.md"
 authors = [
     { name = "Bradley Reynolds", email = "bradley.reynolds@darbia.dev" },
@@ -9,7 +9,10 @@ authors = [
 license = { text = "MIT" }
 requires-python = ">=3.7"
 dependencies = [
-    "click"
+    "python-dotenv",
+    "pydantic",
+    "typer[all]",
+    "darbiadev_shipping[ups]",
 ]
 
 [project.urls]
@@ -34,7 +37,7 @@ docs = [
 ]
 
 [project.scripts]
-hermes = "hermes.__main__:cli"
+hermes = "hermes.main:app"
 
 [build-system]
 requires = ["setuptools", "wheel"]
