@@ -1,13 +1,25 @@
 hermes
 ======
 
-``hermes`` is a wrapper for UPS' API.
+Shipping tooling
 
 Module Index
 ------------
 
-Each of the ``hermes`` modules is documented here.
+.. toctree::
+   :maxdepth: 1
 
-..  toctree::
-    :maxdepth: 1
-    :glob:
+   autoapi/index
+
+.. toctree::
+   :caption: Other:
+   :hidden:
+
+   changelog
+
+Extras
+------
+
+* :ref:`genindex`
+* :ref:`search`
+* :doc:`changelog`
