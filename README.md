@@ -1,3 +1,3 @@
 # hermes
 
-Automated shipping tooling
+Shipping tooling

@@ -1,6 +1,6 @@
-"""__main__ - CLI runner"""
+"""__main__ - CLI runner."""
 
-from .main import app
+from .cli.main import app
 
 if __name__ == "__main__":
     app(prog_name="hermes")

@@ -1,0 +1,8 @@
+# Requirements
+# --index-url=http://pypi.example.com/simple
+# --no-cache-dir
+
+# Core
+pydantic-settings
+darbiadev_shipping[ups]
+typer

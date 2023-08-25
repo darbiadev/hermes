@@ -1,62 +1,53 @@
 [project]
 name = "hermes"
 version = "0.1.0"
-description = "An automated shipping client"
+description = "Shipping tooling"
 readme = "README.md"
 authors = [
     { name = "Bradley Reynolds", email = "bradley.reynolds@darbia.dev" },
 ]
 license = { text = "MIT" }
-requires-python = ">=3.7"
-dependencies = [
-    "python-dotenv",
-    "pydantic",
-    "typer[all]",
-    "darbiadev_shipping[ups]",
-]
+requires-python = ">=3.11"
+dynamic = ["dependencies", "optional-dependencies"]
 
 [project.urls]
 repository = "https://github.com/darbiadev/hermes/"
-documentation = "https://darbiadev.github.io/hermes/"
-
-[project.optional-dependencies]
-dev = [
-    "pylint>=2.12.2",
-    "pytest>=6.2.5",
-    "pytest-cov>=3.0.0",
-    "black>=21.12b0",
-]
-tests = [
-    "pytest>=6.2.5",
-]
-docs = [
-    "sphinx>=4.3.2",
-    "sphinxcontrib-autoprogram>=0.1.7",
-    "sphinx-rtd-theme>=1.0.0",
-    "toml>=0.10.2",
-]
+documentation = "https://docs.darbia.dev/hermes/"
 
 [project.scripts]
-hermes = "hermes.main:app"
+hermes = "hermes.cli.main:app"
 
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.sphinx]
-copyright = "Darbia"
-author = "Bradley Reynolds"
-api_dir = "hermes"
+[tool.setuptools.dynamic.dependencies]
+file = ["requirements/requirements.txt"]
+
+[tool.setuptools.dynamic.optional-dependencies]
+dev = { file = ["requirements/requirements-dev.txt"] }
+tests = { file = ["requirements/requirements-tests.txt"] }
+docs = { file = ["requirements/requirements-docs.txt"] }
 
 [tool.black]
-target-version = ["py310"]
+target-version = ["py311"]
 line-length = 120
 
-[tool.isort]
-profile = "black"
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+select = ["ALL"]
+ignore = [
+]
 
-[tool.pytest.ini_options]
-addopts = "tests -r a -v --doctest-modules src"
+[tool.ruff.extend-per-file-ignores]
+"docs/*" = [
+    "INP001", # (File `tests/*.py` is part of an implicit namespace package. Add an `__init__.py`.) - Docs are not modules
+]
+"tests/*" = [
+    "INP001", # (File `tests/*.py` is part of an implicit namespace package. Add an `__init__.py`.) - Tests are not modules
+    "S101", # (Use of `assert` detected) - Yes, that's the point
+]
 
-[tool.pylint.format]
-max-line-length = 120
+[tool.ruff.pydocstyle]
+convention = "numpy"
