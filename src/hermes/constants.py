@@ -1,9 +1,9 @@
 """
-Loads bot configuration from environment variables and `.env` files.
+Loads configuration from environment variables and `.env` files.
 
 By default, the values defined in the classes are used, these can be overridden by an env var with the same name.
 
-`.env` and `.env.server` files are used to populate env vars, if present.
+An `.env` files is used to populate env vars, if present.
 """
 
 
