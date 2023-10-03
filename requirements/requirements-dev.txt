@@ -19,13 +19,13 @@ distlib==0.3.7
     # via virtualenv
 filelock==3.12.4
     # via virtualenv
-identify==2.5.29
+identify==2.5.30
     # via pre-commit
 mypy-extensions==1.0.0
     # via black
 nodeenv==1.8.0
     # via pre-commit
-packaging==23.1
+packaging==23.2
     # via
     #   black
     #   build
@@ -33,7 +33,7 @@ pathspec==0.11.2
     # via black
 pip-tools==7.3.0
     # via -r requirements-dev.in
-platformdirs==3.10.0
+platformdirs==3.11.0
     # via
     #   black
     #   virtualenv
@@ -43,7 +43,7 @@ pyproject-hooks==1.0.0
     # via build
 pyyaml==6.0.1
     # via pre-commit
-ruff==0.0.291
+ruff==0.0.292
     # via -r requirements-dev.in
 virtualenv==20.24.5
     # via pre-commit
