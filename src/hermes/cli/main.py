@@ -2,7 +2,7 @@
 
 import typer
 
-from hermes.client import get_shipping_client
+from hermes._shipping_client import get_shipping_client
 
 from .ups import app as ups_app
 
