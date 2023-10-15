@@ -5,6 +5,7 @@
 # Core
 pydantic-settings
 darbiadev_shipping[ups]
+darbiadev-shipping-types
 typer
 pandas
 openpyxl

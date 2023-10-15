@@ -1,11 +1,75 @@
 """File parser."""
 
+from enum import Enum
 from logging import Logger
 from pathlib import Path
 
 import pandas as pd
+from darbia.shipping.types import Address
 
 logger = Logger(__name__)
+
+
+class Columns(Enum):
+    """Columns."""
+
+    REFERENCE = "REFERENCE"
+    COMPANY = "company"
+    NAME = "attention_to"
+    ADDRESS_1 = "address1"
+    ADDRESS_2 = "address2"
+    ADDRESS_3 = "address3"
+    CITY = "city"
+    STATE = "state"
+    POSTAL_CODE = "postal_code"
+    COUNTRY = "country"
+    PHONE = "phone"
+    EMAIL = "email"
+    DISCARD = "DISCARD"
+
+
+ADDRESS_COLUMNS = [
+    Columns.COMPANY,
+    Columns.NAME,
+    Columns.ADDRESS_1,
+    Columns.ADDRESS_2,
+    Columns.ADDRESS_3,
+    Columns.CITY,
+    Columns.STATE,
+    Columns.POSTAL_CODE,
+    Columns.COUNTRY,
+    Columns.PHONE,
+    Columns.EMAIL,
+]
+
+
+def _guess_column(column_name: str) -> Columns | None:
+    mapping = {
+        "ordernumber": Columns.REFERENCE,
+        "shipmentid": Columns.REFERENCE,
+        "company": Columns.COMPANY,
+        "attention": Columns.NAME,
+        "address1": Columns.ADDRESS_1,
+        "streetaddress": Columns.ADDRESS_1,
+        "address2": Columns.ADDRESS_2,
+        "address3": Columns.ADDRESS_3,
+        "city": Columns.CITY,
+        "state": Columns.STATE,
+        "postalcode": Columns.POSTAL_CODE,
+        "zip": Columns.POSTAL_CODE,
+        "country": Columns.COUNTRY,
+        "unnamed:": Columns.DISCARD,
+    }
+
+    text = column_name.lower().replace(" ", "").replace("_", "")
+
+    if len(text) == 0:
+        return Columns.DISCARD
+
+    if text in mapping:
+        return mapping[text]
+
+    return None
 
 
 def get_file_contents(path: Path, sheet_name: str | None = None) -> list[dict]:
@@ -33,4 +97,17 @@ def get_file_contents(path: Path, sheet_name: str | None = None) -> list[dict]:
 
 def parse_file(path: Path, sheet_name: str | None = None) -> list[dict]:
     """Parse file."""
-    return get_file_contents(path, sheet_name)
+    rows = get_file_contents(path, sheet_name)
+
+    keys = rows[0].keys()
+    mapping = {_guess_column(key): key for key in keys}
+
+    for row in rows:
+        address = Address(
+            **{
+               const.value: row.get(mapping.get(const))
+               for const in ADDRESS_COLUMNS
+               if row.get(mapping.get(const)) is not None
+            },
+        )
+        print(address)
