@@ -2,21 +2,14 @@
 
 import typer
 
-from hermes._shipping_client import get_shipping_client
-
+from .files import app as files_app
 from .ups import app as ups_app
 
 app = typer.Typer()
+app.add_typer(files_app, name="files")
 app.add_typer(ups_app, name="ups")
 
 
 @app.callback()
 def callback() -> None:
     """Shipping tooling."""
-
-
-@app.command()
-def track(tracking_number: str) -> None:
-    """Track a tracking number."""
-    client = get_shipping_client()
-    typer.echo(client.track(tracking_number))

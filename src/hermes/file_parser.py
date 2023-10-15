@@ -1,3 +1,5 @@
+"""File parser."""
+
 from logging import Logger
 from pathlib import Path
 
@@ -7,6 +9,7 @@ logger = Logger(__name__)
 
 
 def get_file_contents(path: Path, sheet_name: str | None = None) -> list[dict]:
+    """Get file contents."""
     if not path.exists():
         msg = f"File {path} does not exist"
         raise FileNotFoundError(msg)
@@ -16,7 +19,7 @@ def get_file_contents(path: Path, sheet_name: str | None = None) -> list[dict]:
         if len(sheets) > 1:
             msg = f"File {path} has more than one sheet, please specify a sheet name"
             raise ValueError(msg)
-        data = sheets.values()[0]
+        data = next(iter(sheets.values()))
 
     elif path.suffix == ".csv":
         data = pd.read_csv(io=path)
@@ -28,9 +31,6 @@ def get_file_contents(path: Path, sheet_name: str | None = None) -> list[dict]:
     return data.fillna("").to_dict(orient="records")
 
 
-def parse_file(path: Path, sheet_name: str | None = None) -> None:
+def parse_file(path: Path, sheet_name: str | None = None) -> list[dict]:
     """Parse file."""
-    logger.info(f"Parsing file {path}")
-    contents = get_file_contents(path, sheet_name)
-    logger.info(f"File {path} parsed successfully")
-    return contents
+    return get_file_contents(path, sheet_name)
