@@ -21,6 +21,8 @@ darbiadev-shipping[ups]==0.5.0
     # via -r requirements.in
 darbiadev-ups==0.7.0
     # via darbiadev-shipping
+et-xmlfile==1.1.0
+    # via openpyxl
 h11==0.14.0
     # via
     #   darbiadev-ups
@@ -38,6 +40,8 @@ idna==3.4
     #   httpx
 numpy==1.26.1
     # via pandas
+openpyxl==3.1.2
+    # via -r requirements.in
 pandas==2.1.1
     # via -r requirements.in
 pydantic==2.4.2

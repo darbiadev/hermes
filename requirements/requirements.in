@@ -7,3 +7,4 @@ pydantic-settings
 darbiadev_shipping[ups]
 typer
 pandas
+openpyxl
