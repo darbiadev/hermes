@@ -13,7 +13,7 @@ charset-normalizer==3.3.0
 click==8.1.7
     # via typer
 darbiadev-shipping[ups]==0.5.0
-    # via -r requirements.in
+    # via -r requirements/requirements.in
 darbiadev-ups==0.6.5
     # via darbiadev-shipping
 idna==3.4
@@ -22,14 +22,14 @@ pydantic==2.4.2
     # via pydantic-settings
 pydantic-core==2.10.1
     # via pydantic
-pydantic-settings==2.0.3
-    # via -r requirements.in
+pydantic-settings==2.1.0
+    # via -r requirements/requirements.in
 python-dotenv==1.0.0
     # via pydantic-settings
 requests==2.31.0
     # via darbiadev-ups
 typer==0.9.0
-    # via -r requirements.in
+    # via -r requirements/requirements.in
 typing-extensions==4.8.0
     # via
     #   pydantic
