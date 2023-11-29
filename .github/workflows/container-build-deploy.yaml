@@ -1,4 +1,4 @@
-name: "Docker Build and Push"
+name: "Container Build and Push"
 
 on:
   push:
@@ -18,3 +18,5 @@ permissions:
 jobs:
   build-push:
     uses: darbiadev/.github/.github/workflows/docker-build-push.yaml@b0749d50c2f32c5672a7c459f55f39416941c26d # v5.1.0
+    with:
+      file-name: Dockerfile
