@@ -5,15 +5,24 @@ updates:
     schedule:
       interval: "monthly"
     groups:
-       ci-dependencies:
-          patterns:
-            - "*"
+      ci-dependencies:
+        patterns:
+          - "*"
 
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "monthly"
     groups:
-       python-dependencies:
-          patterns:
-            - "*"
+      python-dependencies:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      container-dependencies:
+        patterns:
+          - "*"
