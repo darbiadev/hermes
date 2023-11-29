@@ -21,7 +21,7 @@ jobs:
         os: [ ubuntu-latest ]
         python-version: [ "3.11" ]
 
-    uses: darbiadev/.github/.github/workflows/python-test.yaml@64b318dffebca7a441217225ecb3fcb548358854 # v8.1.0
+    uses: darbiadev/.github/.github/workflows/python-test.yaml@6a6eb74ae11149881c29adf5a5f7af23349c8762 # v9.0.0
     with:
       os: ${{ matrix.os }}
       python-version: ${{ matrix.python-version }}
