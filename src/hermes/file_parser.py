@@ -1,13 +1,13 @@
 """File parser."""
 
 from enum import Enum
-from logging import Logger
+from logging import getLogger
 from pathlib import Path
 
 import pandas as pd
 from darbia.shipping.types import Address
 
-logger = Logger(__name__)
+logger = getLogger(__name__)
 
 
 class Columns(Enum):
@@ -105,9 +105,9 @@ def parse_file(path: Path, sheet_name: str | None = None) -> list[dict]:
     for row in rows:
         address = Address(
             **{
-               const.value: row.get(mapping.get(const))
-               for const in ADDRESS_COLUMNS
-               if row.get(mapping.get(const)) is not None
+                const.value: row.get(mapping.get(const))
+                for const in ADDRESS_COLUMNS
+                if row.get(mapping.get(const)) is not None
             },
         )
         print(address)

@@ -7,7 +7,6 @@ They can be overridden by an env var with the same name.
 An `.env` file is used to populate env vars, if present.
 """
 
-
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
