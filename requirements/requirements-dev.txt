@@ -18,10 +18,20 @@ filelock==3.13.1
     # via virtualenv
 identify==2.5.33
     # via pre-commit
+mypy==1.7.1
+    # via -r requirements/requirements-dev.in
+mypy-extensions==1.0.0
+    # via mypy
 nodeenv==1.8.0
     # via pre-commit
+numpy==1.26.2
+    # via
+    #   -c requirements/requirements.txt
+    #   pandas-stubs
 packaging==23.2
     # via build
+pandas-stubs==2.1.1.230928
+    # via -r requirements/requirements-dev.in
 pip-tools==7.3.0
     # via -r requirements/requirements-dev.in
 platformdirs==4.1.0
@@ -34,6 +44,12 @@ pyyaml==6.0.1
     # via pre-commit
 ruff==0.1.7
     # via -r requirements/requirements-dev.in
+types-pytz==2023.3.1.1
+    # via pandas-stubs
+typing-extensions==4.9.0
+    # via
+    #   -c requirements/requirements.txt
+    #   mypy
 virtualenv==20.25.0
     # via pre-commit
 wheel==0.42.0

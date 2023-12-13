@@ -3,7 +3,7 @@
 from pathlib import Path
 from typing import Self
 
-from .file_parser import parse_file
+from .file_parser import Record, parse_file
 
 
 class Hermes:
@@ -12,6 +12,6 @@ class Hermes:
     def __init__(self: Self) -> None:
         pass
 
-    def parse_file(self: Self, path: Path) -> list[dict]:  # noqa: PLR6301
+    def parse_file(self: Self, path: Path) -> list[Record]:  # noqa: PLR6301
         """Parse file."""
         return parse_file(path)

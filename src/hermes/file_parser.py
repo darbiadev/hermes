@@ -6,7 +6,7 @@ from logging import getLogger
 from pathlib import Path
 
 import pandas as pd
-from darbia.shipping.types import Address
+from darbia.shipping.types import Address  # type: ignore[import-untyped]
 
 logger = getLogger(__name__)
 
@@ -94,10 +94,10 @@ def get_file_contents(path: Path, sheet_name: str | None = None) -> list[dict]:
         if len(sheets) > 1:
             msg = f"File {path} has more than one sheet, please specify a sheet name"
             raise ValueError(msg)
-        data = next(iter(sheets.values()))
+        data = next(iter(sheets.values()))  # type: ignore[operator] # false positive?
 
     elif path.suffix == ".csv":
-        data = pd.read_csv(io=path)
+        data = pd.read_csv(path)
 
     else:
         msg = f"File type {path.suffix} is not supported"
@@ -123,5 +123,5 @@ def parse_file(path: Path, sheet_name: str | None = None) -> list[Record]:
             },
         )
         shipment_id = row.get(mapping.get(Columns.REFERENCE))
-        records.append(Record(shipment_id=shipment_id, ship_to=address))
+        records.append(Record(shipment_id=shipment_id, ship_to=address))  # type: ignore[arg-type]
     return records
