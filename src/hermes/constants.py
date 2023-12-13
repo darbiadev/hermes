@@ -1,7 +1,8 @@
 """
 Loads configuration from environment variables and `.env` files.
 
-By default, the values defined in the classes are used, these can be overridden by an env var with the same name.
+By default, the values defined in the classes are used.
+They can be overridden by an env var with the same name.
 
 An `.env` file is used to populate env vars, if present.
 """
