@@ -1,5 +1,6 @@
 """File parser."""
 
+from dataclasses import dataclass, field
 from enum import Enum
 from logging import getLogger
 from pathlib import Path
@@ -8,6 +9,15 @@ import pandas as pd
 from darbia.shipping.types import Address
 
 logger = getLogger(__name__)
+
+
+@dataclass
+class Record:
+    """A imported record from a file."""
+
+    shipment_id: str
+    ship_to: Address
+    items: dict[str, int] = field(default_factory=dict)
 
 
 class Columns(Enum):
@@ -47,6 +57,7 @@ def _guess_column(column_name: str) -> Columns | None:
     mapping = {
         "ordernumber": Columns.REFERENCE,
         "shipmentid": Columns.REFERENCE,
+        "po#": Columns.REFERENCE,
         "company": Columns.COMPANY,
         "attention": Columns.NAME,
         "address1": Columns.ADDRESS_1,
@@ -95,13 +106,14 @@ def get_file_contents(path: Path, sheet_name: str | None = None) -> list[dict]:
     return data.fillna("").to_dict(orient="records")
 
 
-def parse_file(path: Path, sheet_name: str | None = None) -> list[dict]:
+def parse_file(path: Path, sheet_name: str | None = None) -> list[Record]:
     """Parse file."""
     rows = get_file_contents(path, sheet_name)
 
     keys = rows[0].keys()
     mapping = {_guess_column(key): key for key in keys}
 
+    records = []
     for row in rows:
         address = Address(
             **{
@@ -110,4 +122,6 @@ def parse_file(path: Path, sheet_name: str | None = None) -> list[dict]:
                 if row.get(mapping.get(const)) is not None
             },
         )
-        print(address)
+        shipment_id = row.get(mapping.get(Columns.REFERENCE))
+        records.append(Record(shipment_id=shipment_id, ship_to=address))
+    return records

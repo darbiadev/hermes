@@ -1,7 +1,8 @@
 """File actions."""
 
+from dataclasses import asdict
 from pathlib import Path
-
+import pandas as pd
 import typer
 
 from hermes import Hermes
@@ -18,4 +19,5 @@ def callback() -> None:
 def load_customer_file(file_path: str) -> None:
     """Load a customer file."""
     client = Hermes()
-    typer.echo(client.parse_file(Path(file_path)))
+    records = client.parse_file(Path(file_path))
+    pd.DataFrame([asdict(record) for record in records]).to_csv("test.csv")

@@ -12,6 +12,6 @@ class Hermes:
     def __init__(self: Self) -> None:
         pass
 
-    def parse_file(self: Self, path: Path) -> list[dict]:   # noqa: PLR6301
+    def parse_file(self: Self, path: Path) -> list[dict]:  # noqa: PLR6301
         """Parse file."""
         return parse_file(path)

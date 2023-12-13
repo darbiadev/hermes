@@ -19,7 +19,7 @@ click==8.1.7
     # via typer
 darbiadev-shipping[ups]==0.5.1
     # via -r requirements/requirements.in
-darbiadev-shipping-types==0.1.0
+darbiadev-shipping-types==0.2.0
     # via -r requirements/requirements.in
 darbiadev-ups==0.7.0
     # via darbiadev-shipping
