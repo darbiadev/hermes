@@ -14,3 +14,7 @@ __pycache__
 
 # Docs
 docs/build
+
+# Test data
+/*.xlsx
+/*.csv

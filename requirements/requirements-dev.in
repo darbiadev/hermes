@@ -3,5 +3,6 @@
 
 pip-tools
 pre-commit
-black
 ruff
+mypy
+pandas-stubs

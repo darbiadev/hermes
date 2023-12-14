@@ -1,17 +1,17 @@
-"""Shipping client."""
+"""Hermes."""
 
-from darbiadev_shipping import ShippingServices
+from pathlib import Path
+from typing import Self
 
-from .constants import UPS
+from .file_parser import ImportedShipment, parse_file
 
 
-def get_shipping_client() -> ShippingServices:
-    """Build an authenticated shipping client."""
-    return ShippingServices(
-        ups_auth={
-            "base_url": UPS.base_url,
-            "username": UPS.username,
-            "password": UPS.password,
-            "access_license_number": UPS.access_license_number,
-        },
-    )
+class Hermes:
+    """Hermes."""
+
+    def __init__(self: Self) -> None:
+        pass
+
+    def parse_file(self: Self, path: Path) -> list[ImportedShipment]:  # noqa: PLR6301
+        """Parse file."""
+        return parse_file(path)

@@ -11,7 +11,7 @@ COMMANDS
     install-dev       install local package in editable mode
     update-deps       update the dependencies
     upgrade-deps      upgrade the dependencies
-    lint              run `pre-commit` and `black` and `ruff`
+    lint              run `pre-commit` and `ruff`
     test              run `pytest`
     build-dist        run `python -m build`
     clean             delete generated content
@@ -40,31 +40,29 @@ function Invoke-Install-Dev
 
 function Invoke-Update-Deps
 {
-    python -m pip install --upgrade --editable ".[dev, tests, docs]"
     python -m pip install --upgrade pip-tools
-    cd requirements
-    pip-compile --resolver=backtracking requirements.in --output-file requirements.txt
-    pip-compile --resolver=backtracking requirements-dev.in --output-file requirements-dev.txt
-    pip-compile --resolver=backtracking requirements-tests.in --output-file requirements-tests.txt
-    pip-compile --resolver=backtracking requirements-docs.in --output-file requirements-docs.txt
+    pip-compile --output-file requirements/requirements.txt requirements/requirements.in
+    pip-compile --output-file requirements/requirements-dev.txt requirements/requirements-dev.in
+    pip-compile --output-file requirements/requirements-tests.txt requirements/requirements-tests.in
+    pip-compile --output-file requirements/requirements-docs.txt requirements/requirements-docs.in
 }
 
 function Invoke-Upgrade-Deps
 {
     python -m pip install --upgrade pip-tools pre-commit
     pre-commit autoupdate
-    cd requirements
-    pip-compile --resolver=backtracking --upgrade requirements.in --output-file requirements.txt
-    pip-compile --resolver=backtracking --upgrade requirements-dev.in --output-file requirements-dev.txt
-    pip-compile --resolver=backtracking --upgrade requirements-tests.in --output-file requirements-tests.txt
-    pip-compile --resolver=backtracking --upgrade requirements-docs.in --output-file requirements-docs.txt
+    pip-compile --upgrade --output-file requirements/requirements.txt requirements/requirements.in
+    pip-compile --upgrade --output-file requirements/requirements-dev.txt requirements/requirements-dev.in
+    pip-compile --upgrade --output-file requirements/requirements-tests.txt requirements/requirements-tests.in
+    pip-compile --upgrade --output-file requirements/requirements-docs.txt requirements/requirements-docs.in
 }
 
 function Invoke-Lint
 {
     pre-commit run --all-files
-    python -m black .
     python -m ruff --fix .
+    python -m ruff format .
+    python -m mypy src/
 }
 
 function Invoke-Test
