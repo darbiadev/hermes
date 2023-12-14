@@ -12,7 +12,7 @@ logger = getLogger(__name__)
 
 
 @dataclass
-class Record:
+class ImportedShipment:
     """A imported record from a file."""
 
     shipment_id: str
@@ -106,7 +106,7 @@ def get_file_contents(path: Path, sheet_name: str | None = None) -> list[dict]:
     return data.fillna("").to_dict(orient="records")
 
 
-def parse_file(path: Path, sheet_name: str | None = None) -> list[Record]:
+def parse_file(path: Path, sheet_name: str | None = None) -> list[ImportedShipment]:
     """Parse file."""
     rows = get_file_contents(path, sheet_name)
 
@@ -123,5 +123,5 @@ def parse_file(path: Path, sheet_name: str | None = None) -> list[Record]:
             },
         )
         shipment_id = row.get(mapping.get(Columns.REFERENCE))
-        records.append(Record(shipment_id=shipment_id, ship_to=address))  # type: ignore[arg-type]
+        records.append(ImportedShipment(shipment_id=shipment_id, ship_to=address))  # type: ignore[arg-type]
     return records
