@@ -1,6 +1,9 @@
 Changelog
 =========
 
+- :release:`0.4.0 <27th Decenber 2023>`
+- :feature:`49` Limit support to latest major Python version
+
 - :release:`0.3.0 <27th Decenber 2023>`
 - :feature:`47` Setup publishing to PyPI
 

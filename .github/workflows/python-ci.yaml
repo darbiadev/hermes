@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
-        python-version: [ "3.11" ]
+        python-version: [ "3.12" ]
 
     uses: darbiadev/.github/.github/workflows/python-test.yaml@38577afaee35510b6792495a87b07d49b5cdf387 # v11.0.0
     with:

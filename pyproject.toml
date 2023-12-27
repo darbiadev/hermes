@@ -1,13 +1,13 @@
 [project]
 name = "darbiadev-hermes"
-version = "0.3.0"
+version = "0.4.0"
 description = "Shipping tooling"
 readme = "README.md"
 authors = [
     { name = "Bradley Reynolds", email = "bradley.reynolds@darbia.dev" },
 ]
 license = { text = "MIT" }
-requires-python = ">=3.11"
+requires-python = ">=3.12,<3.13"
 dynamic = ["dependencies", "optional-dependencies"]
 
 [project.urls]
@@ -29,14 +29,10 @@ dev = { file = ["requirements/requirements-dev.txt"] }
 tests = { file = ["requirements/requirements-tests.txt"] }
 docs = { file = ["requirements/requirements-docs.txt"] }
 
-[tool.black]
-target-version = ["py311"]
-line-length = 120
-
 [tool.ruff]
 preview = true
 unsafe-fixes = true
-target-version = "py311"
+target-version = "py312"
 select = ["ALL"]
 line-length = 120
 ignore = [
