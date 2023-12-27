@@ -1,6 +1,6 @@
 [project]
-name = "hermes"
-version = "0.2.0"
+name = "darbiadev-hermes"
+version = "0.3.0"
 description = "Shipping tooling"
 readme = "README.md"
 authors = [
