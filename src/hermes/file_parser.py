@@ -83,7 +83,7 @@ def _guess_column(column_name: str) -> Columns | None:
     return None
 
 
-def get_file_contents(path: Path, sheet_name: str | None = None) -> list[dict]:
+def get_file_contents(path: Path, sheet_name: str | None = None) -> list[dict[str, str | float]]:
     """Get file contents."""
     if not path.exists():
         msg = f"File {path} does not exist"
@@ -103,7 +103,7 @@ def get_file_contents(path: Path, sheet_name: str | None = None) -> list[dict]:
         msg = f"File type {path.suffix} is not supported"
         raise ValueError(msg)
 
-    return data.fillna("").to_dict(orient="records")
+    return data.fillna("").to_dict(orient="records")  # type: ignore[return-value]
 
 
 def parse_file(path: Path, sheet_name: str | None = None) -> list[ImportedShipment]:
@@ -117,11 +117,11 @@ def parse_file(path: Path, sheet_name: str | None = None) -> list[ImportedShipme
     for row in rows:
         address = Address(
             **{
-                const.value: row.get(mapping.get(const))
+                const.value: row.get(mapping.get(const))  # type: ignore[arg-type]
                 for const in ADDRESS_COLUMNS
-                if row.get(mapping.get(const)) is not None
+                if row.get(mapping.get(const)) is not None  # type: ignore[arg-type]
             },
         )
-        shipment_id = row.get(mapping.get(Columns.REFERENCE))
+        shipment_id = row.get(mapping.get(Columns.REFERENCE))  # type: ignore[arg-type]
         records.append(ImportedShipment(shipment_id=shipment_id, ship_to=address))  # type: ignore[arg-type]
     return records

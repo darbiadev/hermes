@@ -41,20 +41,20 @@ function Invoke-Install-Dev
 function Invoke-Update-Deps
 {
     python -m pip install --upgrade pip-tools
-    pip-compile --output-file requirements/requirements.txt requirements/requirements.in
-    pip-compile --output-file requirements/requirements-dev.txt requirements/requirements-dev.in
-    pip-compile --output-file requirements/requirements-tests.txt requirements/requirements-tests.in
-    pip-compile --output-file requirements/requirements-docs.txt requirements/requirements-docs.in
+    pip-compile requirements/requirements.in
+    pip-compile requirements/requirements-dev.in
+    pip-compile requirements/requirements-tests.in
+    pip-compile requirements/requirements-docs.in
 }
 
 function Invoke-Upgrade-Deps
 {
     python -m pip install --upgrade pip-tools pre-commit
     pre-commit autoupdate
-    pip-compile --upgrade --output-file requirements/requirements.txt requirements/requirements.in
-    pip-compile --upgrade --output-file requirements/requirements-dev.txt requirements/requirements-dev.in
-    pip-compile --upgrade --output-file requirements/requirements-tests.txt requirements/requirements-tests.in
-    pip-compile --upgrade --output-file requirements/requirements-docs.txt requirements/requirements-docs.in
+    pip-compile --upgrade requirements/requirements.in
+    pip-compile --upgrade requirements/requirements-dev.in
+    pip-compile --upgrade requirements/requirements-tests.in
+    pip-compile --upgrade requirements/requirements-docs.in
 }
 
 function Invoke-Lint
@@ -62,7 +62,7 @@ function Invoke-Lint
     pre-commit run --all-files
     python -m ruff --fix .
     python -m ruff format .
-    python -m mypy src/
+    python -m mypy --strict src/
 }
 
 function Invoke-Test
