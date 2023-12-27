@@ -1,6 +1,9 @@
 Changelog
 =========
 
+- :release:`0.3.0 <27th Decenber 2023>`
+- :feature:`47` Setup publishing to PyPI
+
 - :release:`0.2.0 <21st Decenber 2023>`
 - :feature:`-` Test tag for Read the Docs
 
