@@ -6,7 +6,7 @@ from logging import getLogger
 from pathlib import Path
 
 import pandas as pd
-from darbia.shipping.types import Address  # type: ignore[import-untyped]
+from darbia.shipping.types import Address
 
 logger = getLogger(__name__)
 
