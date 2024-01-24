@@ -3,15 +3,24 @@
 from pathlib import Path
 from typing import Self
 
-from .file_parser import ImportedShipment, parse_file
+from hermes.config import Config
+from hermes.files import get_config_file_contents, get_data_file_contents
+
+from .parser import parse_rows, shipment_from_parts, shipment_to_output_rows
 
 
 class Hermes:
     """Hermes."""
 
-    def __init__(self: Self) -> None:
-        pass
+    def __init__(self: Self) -> None: ...
 
-    def parse_file(self: Self, path: Path) -> list[ImportedShipment]:  # noqa: PLR6301
+    def parse_file(self: Self, config_file: Path, data_file: Path) -> list[dict]:  # noqa: PLR6301
         """Parse file."""
-        return parse_file(path)
+        config_data = get_config_file_contents(config_file)
+        config = Config(**config_data)  # type: ignore[arg-type]
+        raw_rows = get_data_file_contents(data_file)
+        shipments = [shipment_from_parts(config, row) for row in parse_rows(config, raw_rows)]
+        rows = []
+        for shipment in shipments:
+            rows.extend(shipment_to_output_rows(shipment))
+        return rows

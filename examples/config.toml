@@ -1,0 +1,30 @@
+third_party_account_number="7F77"
+
+item_column_names=[
+    "S",
+    "M",
+    "L",
+]
+
+
+[sender]
+company="The White House"
+attention_to=""
+address1="1600 Pennsylvania Avenue NW"
+address2=""
+address3=""
+city="Washington"
+state="DC"
+postal_code="20500"
+country="United States"
+
+[third_party]
+company="The White House"
+attention_to=""
+address1="1600 Pennsylvania Avenue NW"
+address2=""
+address3=""
+city="Washington"
+state="DC"
+postal_code="20500"
+country="United States"
