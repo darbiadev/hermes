@@ -35,7 +35,7 @@ httpcore==0.18.0
     #   httpx
 httpx==0.25.0
     # via darbiadev-ups
-idna==3.4
+idna==3.7
     # via
     #   anyio
     #   darbiadev-ups
