@@ -7,5 +7,6 @@ pydantic-settings
 darbiadev_shipping[ups]
 darbiadev-shipping-types
 typer
+rich
 pandas
 openpyxl

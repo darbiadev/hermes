@@ -1,12 +1,13 @@
 """File actions."""
 
-from dataclasses import asdict
 from pathlib import Path
 
-import pandas as pd
 import typer
+from pydantic import ValidationError
+from rich import print
 
 from hermes import Hermes
+from hermes.files import rows_to_file
 
 app = typer.Typer()
 
@@ -17,8 +18,12 @@ def callback() -> None:
 
 
 @app.command()
-def load_customer_file(file_path: str) -> None:
+def load_customer_file(config_file: str, data_file: str) -> None:
     """Load a customer file."""
-    client = Hermes()
-    records = client.parse_file(Path(file_path))
-    pd.DataFrame([asdict(record) for record in records]).to_csv("test.csv")
+    try:
+        client = Hermes()
+        records = client.parse_file(Path(config_file), Path(data_file))
+        rows_to_file(records)
+    except (FileNotFoundError, ValidationError, ValueError) as error:
+        print(f"[bold red]{error}[/bold red]")
+        raise typer.Exit(code=1)  # noqa: B904,TRY200
