@@ -4,6 +4,8 @@ from pydantic import BaseModel
 
 
 class Address(BaseModel):
+    """Address."""
+
     company: str
     attention_to: str
     address1: str
@@ -15,11 +17,17 @@ class Address(BaseModel):
     country: str
 
 
+class ThirdParty(BaseModel):
+    """Third Party."""
+
+    account_number: str
+    address: Address
+
+
 class Config(BaseModel):
     """Configuration for Hermes."""
 
     sender: Address
-    third_party: Address
-    third_party_account_number: str
+    third_party: ThirdParty
 
     item_column_names: list[str] = None  # type: ignore[assignment]

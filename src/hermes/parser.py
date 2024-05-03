@@ -14,6 +14,8 @@ logger = getLogger(__name__)
 
 @dataclass
 class OutputRow:
+    """A row in the final file."""
+
     shipment_id: str = ""
     sender_company: str = ""
     sender_attention_to: str = ""
@@ -156,13 +158,13 @@ def parse_rows(config: Config, rows: list[dict[str, str | float]]) -> list[Impor
         )
         shipment_id = row.get(mapping.get(Columns.REFERENCE))  # type: ignore[arg-type]
 
-        imported_shipment = ImportedShipment(shipment_id=shipment_id, ship_to=address)
+        imported_shipment = ImportedShipment(shipment_id=shipment_id, ship_to=address)  # type: ignore[arg-type] # convert the upstream to a dataclass
 
         items = {}
         if config.item_column_names is not None:
             for item_column_name in config.item_column_names:
                 try:
-                    items[item_column_name] = int(row.get(item_column_name))
+                    items[item_column_name] = int(row.get(item_column_name))  # type: ignore[arg-type]
                 except ValueError:
                     msg = f"Invalid value for '{item_column_name}' in order '{shipment_id}'"
                     raise ValueError(msg) from None
@@ -173,7 +175,7 @@ def parse_rows(config: Config, rows: list[dict[str, str | float]]) -> list[Impor
         if len(items) > 0:
             imported_shipment.items = items
 
-        records.append(imported_shipment)  # type: ignore[arg-type]
+        records.append(imported_shipment)
 
     return records
 
@@ -186,8 +188,8 @@ def shipment_from_parts(config: Config, imported_shipment: ImportedShipment) -> 
         ship_to=imported_shipment.ship_to,
         billing=BillingInfo(
             bill_to=BillToSelector.THIRD_PARTY,
-            billing_account=config.third_party_account_number,
-            billing_address=Address(**config.third_party.model_dump()),
+            billing_account=config.third_party.account_number,
+            billing_address=Address(**config.third_party.address.model_dump()),
         ),
         packages=[
             Package(
@@ -223,20 +225,21 @@ def shipment_to_output_rows(shipment: Shipment) -> list[OutputRow]:
         columns[f"sender_{key}"] = value
     for key, value in asdict(shipment.ship_to).items():
         columns[f"recipient_{key}"] = value
-    for key, value in asdict(shipment.billing.billing_address).items():
-        columns[f"third_party_{key}"] = value
+    if shipment.billing.billing_address:
+        for key, value in asdict(shipment.billing.billing_address).items():
+            columns[f"third_party_{key}"] = value
 
     for package in shipment.packages:
-        columns["weight"] = package.weight
-        columns["length"] = package.length
-        columns["width"] = package.width
-        columns["height"] = package.height
+        columns["weight"] = str(package.weight)
+        columns["length"] = str(package.length)
+        columns["width"] = str(package.width)
+        columns["height"] = str(package.height)
         columns["package_reference1"] = package.reference1
         columns["package_reference2"] = package.reference2
         columns["package_reference3"] = package.reference3
         columns["package_reference4"] = package.reference4
         columns["package_reference5"] = package.reference5
 
-        rows.append(OutputRow(**columns))
+        rows.append(OutputRow(**columns))  # type: ignore[arg-type]
 
     return rows

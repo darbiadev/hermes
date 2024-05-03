@@ -1,11 +1,8 @@
-third_party_account_number="7F77"
-
 item_column_names=[
     "S",
     "M",
     "L",
 ]
-
 
 [sender]
 company="The White House"
@@ -19,6 +16,9 @@ postal_code="20500"
 country="United States"
 
 [third_party]
+account_number="7F77"
+
+[third_party.address]
 company="The White House"
 attention_to=""
 address1="1600 Pennsylvania Avenue NW"

@@ -6,7 +6,7 @@ from typing import Self
 from hermes.config import Config
 from hermes.files import get_config_file_contents, get_data_file_contents
 
-from .parser import parse_rows, shipment_from_parts, shipment_to_output_rows
+from .parser import OutputRow, parse_rows, shipment_from_parts, shipment_to_output_rows
 
 
 class Hermes:
@@ -14,7 +14,7 @@ class Hermes:
 
     def __init__(self: Self) -> None: ...
 
-    def parse_file(self: Self, config_file: Path, data_file: Path) -> list[dict]:  # noqa: PLR6301
+    def parse_file(self: Self, config_file: Path, data_file: Path) -> list[OutputRow]:  # noqa: PLR6301
         """Parse file."""
         config_data = get_config_file_contents(config_file)
         config = Config(**config_data)  # type: ignore[arg-type]

@@ -5,6 +5,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from hermes.parser import OutputRow
+
 
 def get_config_file_contents(path: Path) -> dict[str, str | bool | float]:
     """Get config contents."""
@@ -40,6 +42,6 @@ def get_data_file_contents(path: Path, sheet_name: str | None = None) -> list[di
     return data.fillna("").to_dict(orient="records")  # type: ignore[return-value]
 
 
-def rows_to_file(rows: list[dict]) -> None:
+def rows_to_file(rows: list[OutputRow]) -> None:
     """Write rows to file."""
     pd.DataFrame(rows).to_csv("output.csv", index=False)
