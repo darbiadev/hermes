@@ -1,4 +1,4 @@
-FROM python:3.12-slim@sha256:5dc6f84b5e97bfb0c90abfb7c55f3cacc2cb6687c8f920b64a833a2219875997
+FROM python:3.12-slim@sha256:afc139a0a640942491ec481ad8dda10f2c5b753f5c969393b12480155fe15a63
 
 COPY requirements/requirements.txt .
 RUN python -m pip install --requirement requirements.txt
