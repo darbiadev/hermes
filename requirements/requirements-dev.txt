@@ -30,13 +30,13 @@ numpy==1.26.4
     #   pandas-stubs
 packaging==24.0
     # via build
-pandas-stubs==2.2.1.240316
+pandas-stubs==2.2.2.240514
     # via -r requirements/requirements-dev.in
 pip-tools==7.4.1
     # via -r requirements/requirements-dev.in
 platformdirs==4.2.1
     # via virtualenv
-pre-commit==3.7.0
+pre-commit==3.7.1
     # via -r requirements/requirements-dev.in
 pyproject-hooks==1.1.0
     # via
@@ -44,7 +44,7 @@ pyproject-hooks==1.1.0
     #   pip-tools
 pyyaml==6.0.1
     # via pre-commit
-ruff==0.4.2
+ruff==0.4.7
     # via -r requirements/requirements-dev.in
 types-pytz==2024.1.0.20240417
     # via pandas-stubs
