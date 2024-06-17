@@ -6,8 +6,6 @@
 #
 alabaster==0.7.16
     # via sphinx
-anyascii==0.3.2
-    # via sphinx-autoapi
 astroid==3.1.0
     # via sphinx-autoapi
 babel==2.14.0
@@ -22,7 +20,7 @@ charset-normalizer==3.3.2
     # via requests
 docutils==0.21.2
     # via sphinx
-furo==2024.4.27
+furo==2024.5.6
     # via -r requirements/requirements-docs.in
 idna==3.4
     # via
@@ -62,7 +60,7 @@ sphinx==7.3.7
     #   releases
     #   sphinx-autoapi
     #   sphinx-basic-ng
-sphinx-autoapi==3.0.0
+sphinx-autoapi==3.1.1
     # via -r requirements/requirements-docs.in
 sphinx-basic-ng==1.0.0b2
     # via furo
