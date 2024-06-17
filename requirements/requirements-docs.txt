@@ -16,17 +16,17 @@ beautifulsoup4==4.12.3
     # via furo
 certifi==2023.7.22
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   requests
 charset-normalizer==3.3.2
     # via requests
 docutils==0.21.2
     # via sphinx
 furo==2024.4.27
-    # via -r requirements/requirements-docs.in
+    # via -r requirements-docs.in
 idna==3.4
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   requests
 imagesize==1.4.1
     # via sphinx
@@ -40,14 +40,14 @@ packaging==24.0
     # via sphinx
 pygments==2.17.2
     # via
-    #   -c requirements/requirements.txt
+    #   -c requirements.txt
     #   furo
     #   sphinx
 pyyaml==6.0.1
     # via sphinx-autoapi
 releases==2.1.1
-    # via -r requirements/requirements-docs.in
-requests==2.31.0
+    # via -r requirements-docs.in
+requests==2.32.2
     # via sphinx
 semantic-version==2.6.0
     # via releases
@@ -57,13 +57,13 @@ soupsieve==2.5
     # via beautifulsoup4
 sphinx==7.3.7
     # via
-    #   -r requirements/requirements-docs.in
+    #   -r requirements-docs.in
     #   furo
     #   releases
     #   sphinx-autoapi
     #   sphinx-basic-ng
 sphinx-autoapi==3.0.0
-    # via -r requirements/requirements-docs.in
+    # via -r requirements-docs.in
 sphinx-basic-ng==1.0.0b2
     # via furo
 sphinxcontrib-applehelp==1.0.8
@@ -78,5 +78,5 @@ sphinxcontrib-qthelp==1.0.7
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.10
     # via sphinx
-urllib3==2.2.1
+urllib3==2.2.2
     # via requests
