@@ -6,11 +6,9 @@
 #
 alabaster==0.7.16
     # via sphinx
-anyascii==0.3.2
+astroid==3.2.2
     # via sphinx-autoapi
-astroid==3.1.0
-    # via sphinx-autoapi
-babel==2.14.0
+babel==2.15.0
     # via sphinx
 beautifulsoup4==4.12.3
     # via furo
@@ -22,7 +20,7 @@ charset-normalizer==3.3.2
     # via requests
 docutils==0.21.2
     # via sphinx
-furo==2024.4.27
+furo==2024.5.6
     # via -r requirements/requirements-docs.in
 idna==3.4
     # via
@@ -30,15 +28,15 @@ idna==3.4
     #   requests
 imagesize==1.4.1
     # via sphinx
-jinja2==3.1.3
+jinja2==3.1.4
     # via
     #   sphinx
     #   sphinx-autoapi
 markupsafe==2.1.5
     # via jinja2
-packaging==24.0
+packaging==24.1
     # via sphinx
-pygments==2.17.2
+pygments==2.18.0
     # via
     #   -c requirements/requirements.txt
     #   furo
@@ -47,7 +45,7 @@ pyyaml==6.0.1
     # via sphinx-autoapi
 releases==2.1.1
     # via -r requirements/requirements-docs.in
-requests==2.31.0
+requests==2.32.3
     # via sphinx
 semantic-version==2.6.0
     # via releases
@@ -62,7 +60,7 @@ sphinx==7.3.7
     #   releases
     #   sphinx-autoapi
     #   sphinx-basic-ng
-sphinx-autoapi==3.0.0
+sphinx-autoapi==3.1.1
     # via -r requirements/requirements-docs.in
 sphinx-basic-ng==1.0.0b2
     # via furo
@@ -78,5 +76,5 @@ sphinxcontrib-qthelp==1.0.7
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.10
     # via sphinx
-urllib3==2.2.1
+urllib3==2.2.2
     # via requests
