@@ -26,4 +26,4 @@ def load_customer_file(config_file: str, data_file: str) -> None:
         rows_to_file(records)
     except (FileNotFoundError, ValidationError, ValueError) as error:
         print(f"[bold red]{error}[/bold red]")
-        raise typer.Exit(code=1)  # noqa: B904,TRY200
+        raise typer.Exit(code=1)  # noqa: B904
