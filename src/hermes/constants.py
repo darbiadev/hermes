@@ -19,15 +19,3 @@ class EnvConfig(BaseSettings):
         env_nested_delimiter="__",
         extra="ignore",
     )
-
-
-class _UPS(EnvConfig, env_prefix="ups_"):
-    """UPS auth."""
-
-    base_url: str = ""
-    username: str = ""
-    password: str = ""
-    access_license_number: str = ""
-
-
-UPS = _UPS()
