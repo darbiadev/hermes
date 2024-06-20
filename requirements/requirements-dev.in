@@ -6,3 +6,4 @@ pre-commit
 ruff
 mypy
 pandas-stubs
+nox
