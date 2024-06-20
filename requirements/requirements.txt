@@ -6,40 +6,12 @@
 #
 annotated-types==0.7.0
     # via pydantic
-anyio==4.0.0
-    # via
-    #   darbiadev-ups
-    #   httpcore
-certifi==2023.7.22
-    # via
-    #   darbiadev-ups
-    #   httpcore
-    #   httpx
 click==8.1.7
     # via typer
-darbiadev-shipping[ups]==0.5.1
-    # via -r requirements/requirements.in
 darbiadev-shipping-types==0.4.0
     # via -r requirements/requirements.in
-darbiadev-ups==0.7.0
-    # via darbiadev-shipping
 et-xmlfile==1.1.0
     # via openpyxl
-h11==0.14.0
-    # via
-    #   darbiadev-ups
-    #   httpcore
-httpcore==0.18.0
-    # via
-    #   darbiadev-ups
-    #   httpx
-httpx==0.25.0
-    # via darbiadev-ups
-idna==3.4
-    # via
-    #   anyio
-    #   darbiadev-ups
-    #   httpx
 markdown-it-py==3.0.0
     # via rich
 mdurl==0.1.2
@@ -72,12 +44,6 @@ shellingham==1.5.4
     # via typer
 six==1.16.0
     # via python-dateutil
-sniffio==1.3.0
-    # via
-    #   anyio
-    #   darbiadev-ups
-    #   httpcore
-    #   httpx
 typer==0.12.3
     # via -r requirements/requirements.in
 typing-extensions==4.12.2
