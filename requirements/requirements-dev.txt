@@ -4,6 +4,8 @@
 #
 #    pip-compile requirements/requirements-dev.in
 #
+argcomplete==3.4.0
+    # via nox
 build==1.2.1
     # via pip-tools
 cfgv==3.4.0
@@ -12,6 +14,8 @@ click==8.1.7
     # via
     #   -c requirements/requirements.txt
     #   pip-tools
+colorlog==6.8.2
+    # via nox
 distlib==0.3.8
     # via virtualenv
 filelock==3.15.3
@@ -24,12 +28,16 @@ mypy-extensions==1.0.0
     # via mypy
 nodeenv==1.9.1
     # via pre-commit
+nox==2024.4.15
+    # via -r requirements/requirements-dev.in
 numpy==2.0.0
     # via
     #   -c requirements/requirements.txt
     #   pandas-stubs
 packaging==24.1
-    # via build
+    # via
+    #   build
+    #   nox
 pandas-stubs==2.2.2.240603
     # via -r requirements/requirements-dev.in
 pip-tools==7.4.1
@@ -53,7 +61,9 @@ typing-extensions==4.12.2
     #   -c requirements/requirements.txt
     #   mypy
 virtualenv==20.26.2
-    # via pre-commit
+    # via
+    #   nox
+    #   pre-commit
 wheel==0.43.0
     # via pip-tools
 
