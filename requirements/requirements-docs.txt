@@ -56,7 +56,7 @@ sphinx==7.3.7
     #   releases
     #   sphinx-autoapi
     #   sphinx-basic-ng
-sphinx-autoapi==3.1.1
+sphinx-autoapi==3.1.2
     # via -r requirements/requirements-docs.in
 sphinx-basic-ng==1.0.0b2
     # via furo

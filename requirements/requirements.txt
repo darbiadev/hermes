@@ -18,7 +18,7 @@ mdurl==0.1.2
     # via markdown-it-py
 numpy==2.0.0
     # via pandas
-openpyxl==3.1.4
+openpyxl==3.1.5
     # via -r requirements/requirements.in
 pandas==2.2.2
     # via -r requirements/requirements.in
@@ -26,7 +26,7 @@ pydantic==2.7.4
     # via pydantic-settings
 pydantic-core==2.18.4
     # via pydantic
-pydantic-settings==2.3.3
+pydantic-settings==2.3.4
     # via -r requirements/requirements.in
 pygments==2.18.0
     # via rich
