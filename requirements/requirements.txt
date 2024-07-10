@@ -53,3 +53,4 @@ typing-extensions==4.12.2
     #   typer
 tzdata==2024.1
     # via pandas
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
