@@ -18,9 +18,9 @@ colorlog==6.8.2
     # via nox
 distlib==0.3.8
     # via virtualenv
-filelock==3.15.3
+filelock==3.15.4
     # via virtualenv
-identify==2.5.36
+identify==2.6.0
     # via pre-commit
 mypy==1.10.1
     # via -r requirements/requirements-dev.in
@@ -52,7 +52,7 @@ pyproject-hooks==1.1.0
     #   pip-tools
 pyyaml==6.0.1
     # via pre-commit
-ruff==0.5.0
+ruff==0.5.2
     # via -r requirements/requirements-dev.in
 types-pytz==2024.1.0.20240417
     # via pandas-stubs
@@ -60,7 +60,7 @@ typing-extensions==4.12.2
     # via
     #   -c requirements/requirements.txt
     #   mypy
-virtualenv==20.26.2
+virtualenv==20.26.3
     # via
     #   nox
     #   pre-commit
