@@ -22,7 +22,7 @@ filelock==3.15.4
     # via virtualenv
 identify==2.6.0
     # via pre-commit
-mypy==1.10.1
+mypy==1.11.2
     # via -r requirements/requirements-dev.in
 mypy-extensions==1.0.0
     # via mypy
@@ -38,13 +38,13 @@ packaging==24.1
     # via
     #   build
     #   nox
-pandas-stubs==2.2.2.240603
+pandas-stubs==2.2.2.240807
     # via -r requirements/requirements-dev.in
 pip-tools==7.4.1
     # via -r requirements/requirements-dev.in
 platformdirs==4.2.2
     # via virtualenv
-pre-commit==3.7.1
+pre-commit==3.8.0
     # via -r requirements/requirements-dev.in
 pyproject-hooks==1.1.0
     # via
@@ -52,7 +52,7 @@ pyproject-hooks==1.1.0
     #   pip-tools
 pyyaml==6.0.1
     # via pre-commit
-ruff==0.5.2
+ruff==0.6.3
     # via -r requirements/requirements-dev.in
 types-pytz==2024.1.0.20240417
     # via pandas-stubs
