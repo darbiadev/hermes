@@ -7,8 +7,15 @@ authors = [
     { name = "Bradley Reynolds", email = "bradley.reynolds@darbia.dev" },
 ]
 license = { text = "MIT" }
-requires-python = ">=3.12,<3.13"
-dynamic = ["dependencies", "optional-dependencies"]
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic-settings>=2.6.0",
+    "darbiadev-shipping-types>=0.4.0",
+    "typer>=0.12.5",
+    "rich>=13.9.3",
+    "pandas>=2.2.3",
+    "openpyxl>=3.1.5",
+]
 
 [project.urls]
 repository = "https://github.com/darbiadev/hermes/"
@@ -17,23 +24,31 @@ documentation = "https://docs.darbia.dev/hermes/"
 [project.scripts]
 hermes = "hermes.cli.main:app"
 
+[project.optional-dependencies]
+dev = [
+    "nox>=2024.4.15",
+    "pre-commit>=3.7.1",
+    "ruff>=0.5.2",
+    "mypy>=1.10.1",
+    "pandas-stubs>=2.2.3.241009",
+]
+docs = [
+    "sphinx>=7.4.4",
+    "furo>=2024.5.6",
+    "sphinx-autoapi>=3.1.2",
+    "releases>=2.1.1",
+]
+tests = [
+    "pytest>=8.2.2",
+    "pytest-randomly>=3.15.0",
+]
+
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools.dynamic.dependencies]
-file = ["requirements/requirements.txt"]
-
-[tool.setuptools.dynamic.optional-dependencies]
-dev = { file = ["requirements/requirements-dev.txt"] }
-tests = { file = ["requirements/requirements-tests.txt"] }
-docs = { file = ["requirements/requirements-docs.txt"] }
-
 [tool.ruff]
-preview = true
-unsafe-fixes = true
 target-version = "py312"
-
 line-length = 120
 
 [tool.ruff.lint]
