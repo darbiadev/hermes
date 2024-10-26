@@ -14,7 +14,7 @@ class Hermes:
 
     def __init__(self: Self) -> None: ...
 
-    def parse_file(self: Self, config_file: Path, data_file: Path) -> list[OutputRow]:  # noqa: PLR6301
+    def parse_file(self: Self, config_file: Path, data_file: Path) -> list[OutputRow]:
         """Parse file."""
         config_data = get_config_file_contents(config_file)
         config = Config(**config_data)  # type: ignore[arg-type]

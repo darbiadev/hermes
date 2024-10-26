@@ -1,7 +1,8 @@
 """Testing the app."""
 
-from hermes.cli.main import app
 from typer.testing import CliRunner
+
+from hermes.cli.main import app
 
 runner = CliRunner()
 
