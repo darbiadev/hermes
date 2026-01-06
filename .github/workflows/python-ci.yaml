@@ -6,6 +6,9 @@ on:
       - main
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   pre-commit:
     uses: darbiadev/.github/.github/workflows/generic-precommit.yaml@440166417b42442c6114aaa895094f0db7de9b78 # v15.2.0
