@@ -4,7 +4,7 @@ from pathlib import Path
 
 import typer
 from pydantic import ValidationError
-from rich import print
+from rich import print  # noqa: A004
 
 from hermes import Hermes
 from hermes.files import rows_to_file

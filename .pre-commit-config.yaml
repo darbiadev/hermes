@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c  # frozen: v6.0.0
     hooks:
       - id: check-case-conflict
       - id: check-merge-conflict
@@ -15,19 +15,10 @@ repos:
         exclude: .devcontainer/devcontainer-lock.json
 
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.4.25
+    rev: 358ed3edbafb488413578da33f146c2be3ae2551  # frozen: 0.9.22
     hooks:
       - id: uv-lock
       - id: uv-export
-        args:
-          - --frozen
-          - --no-emit-project
-          - --output-file=requirements.txt
-        files: pyproject.toml|uv.lock
+        args: ["--quiet", "--frozen", "--all-extras", "--all-groups", "--output-file=requirements.txt"]
       - id: uv-export
-        args:
-          - --frozen
-          - --no-emit-project
-          - --all-extras
-          - --output-file=requirements-dev.txt
-        files: pyproject.toml|uv.lock
+        args: ["--quiet", "--frozen", "--all-extras", "--all-groups", "--format=pylock.toml", "--output-file=pylock.toml"]
